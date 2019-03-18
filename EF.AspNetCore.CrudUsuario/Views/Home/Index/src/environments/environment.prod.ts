@@ -1,3 +1,7 @@
 export const environment = {
-  production: true
+  production: true,
+    url: {
+    baseApi: 'http://localhost:44365/api/',
+    usuarios: 'usuarios/'
+  }
 };
