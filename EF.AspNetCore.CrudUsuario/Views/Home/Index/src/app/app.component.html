@@ -1,0 +1,125 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+
+
+  <table width="100%" style="background:#05163D;color:honeydew">
+    <tr>
+      <td width="20"> </td>
+      <td>
+        <h2>Cadastro de Usuarios</h2>
+      </td>
+      <td> </td>
+      <td align="right">
+        <button class="btn btn-info" (onclick)="AddNovoUsuario">Incluir Novo Usuario</button>
+      </td>
+      <td width="10"> </td>
+    </tr>
+    <tr>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+
+  <hr />
+  <form>
+    <table class="form-group">
+      <tr>
+        <td>
+          <label for="Name" class="control-label">Código</label>
+        </td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="usuario.Id" name="id" [readonly] />
+        </td>
+        <td width="20"> </td>
+        <td>
+          <label for="Name" class="control-label">Nome</label>
+        </td>
+        <td>
+          <input type="text" class="form-control" ([ngModel])="usuario.Nome" name="nome" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="Sobrenome" class="control-label">Sobrenome</label>
+        </td>
+        <td>
+          <input type="text" class="form-control" ([ngModel])="usuario.Sobrenome" name="sobrenome" />
+        </td>
+        <td width="20"> </td>
+        <td>
+          <label for="Email" class="control-label">Email</label>
+        </td>
+        <td>
+          <input type="text" class="form-control" ([ngModel])="usuario.Email" name="email" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="DataNascimento" class="control-label">DataNascimento</label>
+        </td>
+        <td>
+          <input type="text" class="form-control" ([ngModel])="usuario.DataNascimento" name="dataNascimento"/>
+        </td>
+        <td width="20"> </td>
+        <td>
+          <label for="Perfil" class="control-label">Perfil</label>
+        </td>
+        <td>
+          <input type="text" class="form-control" ([ngModel])="usuario.Perfil" name="perfil"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" class="btn btn-success" (onclick)="AddUsuario()" style="width:220px;">Salvar</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <table width="100%" style="background:#0A2464;color:honeydew">
+    <tr>
+      <td width="20"> </td>
+      <td>
+        <h2>Detalhes dos Usuarios</h2>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"></td>
+    </tr>
+  </table>
+
+  <p *ngIf="_Usuarios === null"><em>Carregando...</em></p>
+
+  <table *ngIf="_Usuarios === null" class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th>
+        <th>DataNascimento</th>
+        <th>Perfil</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let user of _usuarios">
+        <td>{{ user.Id }}</td>
+        <td>{{ user.Nome }}</td>
+        <td>{{ user.Sobrenome }}</td>
+        <td>{{ user.Email }}</td>
+        <td>{{ user.DataNascimento }}</td>
+        <td>{{ user.Perfil }}</td>
+        <td><button class="btn btn-primary" (click)="EditUsuario(user.Id)" style="width:110px;">Editar</button>
+        </td>
+        <td><button class="btn btn-danger" (click)="DeleteUsuario(user.Id)">Deletar</button></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+  <router-outlet></router-outlet>
